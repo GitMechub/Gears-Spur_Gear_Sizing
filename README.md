@@ -31,3 +31,35 @@ In addition, Gear Train Sizer will create a separate sheet with the precise coor
   [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=z66-aUrW6dE&t=58s)
   
   ---
+
+## Sobre o Gear Train Sizer:
+
+O Spur Gear Sizing é um aplicativo em Python projetado para ajudá-lo a dimensionar rapidamente e facilmente um trem de engrenagens retas compostas de acordo com a metodologia de "Machine Design: An Integrated Approach" de Norton e os padrões AGMA.
+
+## Como Funciona:
+
+Para usar o Gear Train Sizer, você só precisa inserir alguns parâmetros chave:
+- Distância entre o primeiro e o último eixo
+- Requisitos de torque e resistência
+- Ângulo de pressão
+- Material selecionado para as engrenagens
+
+O aplicativo então gerará uma tabela detalhada mostrando as principais dimensões, tensões e fatores de segurança para cada engrenagem no trem. Ele também exibirá a configuração completa, incluindo o número de identificação de cada engrenagem. Além disso, o Gear Train Sizer criará uma planilha separada com as coordenadas precisas do perfil de cada engrenagem. Você pode usar essas coordenadas para criar facilmente um modelo CAD de cada engrenagem.
+
+## Principais Características:
+
+- Dimensionamento rápido e fácil - Insira alguns parâmetros e obtenha um design completo do trem de engrenagens
+- Análise detalhada - Tabela mostra dimensões, tensões e fatores de segurança para cada engrenagem
+- Configuração completa - Exibe o layout completo do trem de engrenagens com IDs
+- Integração com CAD - Gera coordenadas do perfil das engrenagens para modelagem CAD
+
+---
+
+- Vídeo Tutorial:
+
+  [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/T1YwprHeOw4)
+
+- Como você pode me ajudar a melhorar este código:
+
+  [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=z66-aUrW6dE&t=58s)
+
