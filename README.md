@@ -20,8 +20,6 @@ In addition, Gear Train Sizer will create a separate sheet with the precise coor
 - Full configuration - Displays complete gear train layout with IDs
 - CAD integration - Generates gear profile coordinates for CAD modeling
 
---- 
-
 - Tutorial Video:
 
   [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/T1YwprHeOw4)
@@ -30,7 +28,7 @@ In addition, Gear Train Sizer will create a separate sheet with the precise coor
 
   [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=z66-aUrW6dE&t=58s)
   
-  ---
+---
 
 ## Sobre o Gear Train Sizer:
 
@@ -52,8 +50,6 @@ O aplicativo então gerará uma tabela detalhada mostrando as principais dimens�
 - Análise detalhada - Tabela mostra dimensões, tensões e fatores de segurança para cada engrenagem
 - Configuração completa - Exibe o layout completo do trem de engrenagens com IDs
 - Integração com CAD - Gera coordenadas do perfil das engrenagens para modelagem CAD
-
----
 
 - Vídeo Tutorial:
 
