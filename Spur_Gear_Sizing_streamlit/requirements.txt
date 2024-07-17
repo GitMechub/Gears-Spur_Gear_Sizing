@@ -6,4 +6,4 @@ plotly==5.20.0
 streamlit==1.36.0
 streamlit_player==0.1.5
 cadquery==2.4.0
-cadquery-ocp==7.7.2
+
