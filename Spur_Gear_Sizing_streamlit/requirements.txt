@@ -3,7 +3,6 @@ numpy==2.0.0
 pandas==2.2.2
 Pillow==10.4.0
 plotly==5.20.0
-rocketcea==1.2.1
 streamlit==1.36.0
 streamlit_player==0.1.5
 cadquery-ocp==7.7.2
