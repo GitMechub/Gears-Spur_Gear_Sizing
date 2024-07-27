@@ -1129,7 +1129,7 @@ if run_button or 'GEARS' in st.session_state:
 
         for gear in range(len(gears)):
 
-   	  gear_coord_ = pd.DataFrame(gear_coord[gear])
+   	      gear_coord_ = pd.DataFrame(gear_coord[gear])
     	  gear_coord_['x'] = gear_coord_['x'] * 0.001
           gear_coord_['y'] = gear_coord_['y'] * 0.001
 
