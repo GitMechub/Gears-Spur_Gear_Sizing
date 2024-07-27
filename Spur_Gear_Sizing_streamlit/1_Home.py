@@ -1128,7 +1128,15 @@ if run_button or 'GEARS' in st.session_state:
         gears_df.to_excel(excel_writer, sheet_name='Gear data', index=True)
 
         for gear in range(len(gears)):
-          pd.DataFrame(gear_coord[gear]).to_excel(excel_writer, sheet_name='Gear coord ' + str(gear), index=False)
+
+   	  gear_coord_ = pd.DataFrame(gear_coord[gear])
+    	  gear_coord_['x'] = gear_coord_['x'] * 0.001
+          gear_coord_['y'] = gear_coord_['y'] * 0.001
+
+    	  #pd.DataFrame(gear_coord[gear]).to_excel(excel_writer, sheet_name='Gear coord '+str(gear), index=False)
+
+    	  gear_coord_.to_excel(excel_writer, sheet_name='Gear coord '+str(gear), index=False)
+
 
         # Close the Pandas Excel writer and output the Excel file to the buffer
         excel_writer.close()
