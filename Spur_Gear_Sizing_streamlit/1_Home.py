@@ -1135,7 +1135,7 @@ if run_button or 'GEARS' in st.session_state:
             
             #pd.DataFrame(gear_coord[gear]).to_excel(excel_writer, sheet_name='Gear coord '+str(gear), index=False)
             
-            gear_coord_.to_excel(excel_writer, sheet_name='Gear coord '+str(gear), index=False)
+            gear_coord_.to_excel(excel_writer, sheet_name='Gear coord (m) '+str(gear), index=False)
 
 
         # Close the Pandas Excel writer and output the Excel file to the buffer
