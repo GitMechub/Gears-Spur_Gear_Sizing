@@ -62,11 +62,3 @@ O aplicativo então gerará uma tabela detalhada mostrando as principais dimens�
   [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=z66-aUrW6dE&t=58s))]
 
 
-- Vídeo Tutorial:
-
-  [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/T1YwprHeOw4)
-
-- Como você pode me ajudar a melhorar este código:
-
-  [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=z66-aUrW6dE&t=58s)
-
