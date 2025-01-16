@@ -1173,30 +1173,48 @@ if run_button or 'GEARS' in st.session_state:
 
       with col3:
         with st.spinner('Wait for the download buttons for the ' + str(len(gears)) + ' gears'):
-          for gear in range(len(gears)):
+            
+            def dict_to_tuples(coord_dict, key):
+                x_values = np.concatenate([coord_dict[key]['x']])
+                y_values = np.concatenate([coord_dict[key]['y']])
+                return list(zip(x_values, y_values))
+                        
+            for gear in range(len(gears)):
+            
               tuplas = dict_to_tuples(gear_coord, gear)
-
-              tuplas = [(round(x, 4), round(y, 4)) for x, y in tuplas]
-
-              tuplas_unicas = []
-              vistas = set()
-
-              for tupla in tuplas:
-                if tupla not in vistas:
-                  tuplas_unicas.append(tupla)
-                  vistas.add(tupla)
-
-              result = cq.Workplane("front").polyline(tuplas_unicas).close().extrude(round(gears[gear]['Face width'], 2))
-
-              # Export the box to a STEP file
-              step_file = str(path)+"/gear" + str(gear) + ".stp"
-              cq.exporters.export(result, step_file, "STEP")
-
+            
+              tuplas_ = [(round(x, 4), round(y, 4)) for x, y in tuplas]
+            
+              #tuplas_ = [(x, y) for (x, y, s, t) in tuplas]
+            
+              # Converter tuplas_ em um array NumPy para vetorização
+              tuplas_array = np.array(tuplas_)
+            
+              # Eliminar pontos duplicados (baseado em linha consecutiva)
+              diferentes = np.any(np.diff(tuplas_array, axis=0), axis=1)
+              lista_pontos = np.vstack((tuplas_array[0], tuplas_array[1:][diferentes]))
+            
+              # Criar o perfil para o esboço no formato (r, z) (já otimizado)
+              perfil = [(r, z) for z, r in lista_pontos]  # Inverte as coordenadas
+            
+              # Criar o esboço no CadQuery
+              esboco = cq.Workplane("XY").polyline(perfil).close()
+            
+              # Revolver o perfil ao redor do eixo Z
+              result = esboco.extrude(round(gears[gear]['Face width'], 2))
+            
+              # Exportar como STL e STEP
+              step_file = str(path)+"/gear_"+str(gear)+".step"
+                
+              exporters.export(result, str(path)+"/gear_"+str(gear)+".stl")
+            
+              exporters.export(result, step_file)
+                
               # Create a download button
               st.download_button(
-                      label="Download CAD Gear "+str(gear)+".stp",
+                      label="Download CAD Gear "+str(gear)+".step",
                       data=open(step_file, "rb").read(),
-                      file_name="gear" + str(gear) + ".stp",
+                      file_name="gear_"+str(gear)+".step",
                       mime="application/step"
               )
 
