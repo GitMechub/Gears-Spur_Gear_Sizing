@@ -901,6 +901,8 @@ if run_button or 'GEARS' in st.session_state:
       gear_coord = {}
 
       _linespace_ = int(C/3)
+      _linespace_2 = _linespace_/gears[gear]['Number of teeth'] if _linespace_/gears[gear]['Number of teeth'] > 3 else 3
+      _linespace_3 = 3
 
       for gear in range(len(gears)):
 
@@ -1010,9 +1012,9 @@ if run_button or 'GEARS' in st.session_state:
             theta_Anext_root_rad)
 
           if theta_B_root_rad <= theta_Anext_root_rad:
-            theta_arc_root = np.linspace(theta_B_root_rad, theta_Anext_root_rad, _linespace_)
+            theta_arc_root = np.linspace(theta_B_root_rad, theta_Anext_root_rad, _linespace_2)
           else:
-            theta_arc_root = np.linspace(theta_B_root_rad, theta_Anext_root_rad + 2 * np.pi, _linespace_)
+            theta_arc_root = np.linspace(theta_B_root_rad, theta_Anext_root_rad + 2 * np.pi, _linespace_2)
 
           arc_x_root.append(root_radius * np.cos(theta_arc_root))
           arc_y_root.append(root_radius * np.sin(theta_arc_root))
@@ -1021,10 +1023,10 @@ if run_button or 'GEARS' in st.session_state:
 
           if np.isclose(theta_A_root_rad, np.pi / 2) or np.isclose(theta_A_root_rad, -np.pi / 2):
             # A
-            x_A_line_root = np.full(_linespace_, x_pointA_root)
-            y_A_line_root = np.linspace(y_pointA_root, y_pointA_base, _linespace_)
+            x_A_line_root = np.full(_linespace_2, x_pointA_root)
+            y_A_line_root = np.linspace(y_pointA_root, y_pointA_base, _linespace_2)
           else:
-            x_A_line_root = np.linspace(x_pointA_root, x_pointA_base, _linespace_)
+            x_A_line_root = np.linspace(x_pointA_root, x_pointA_base, _linespace_2)
             y_A_line_root = y_pointA_root + (x_A_line_root - x_pointA_root) * np.tan(theta_A_root_rad)
 
           line_x_root_A.append(x_A_line_root)
@@ -1032,10 +1034,10 @@ if run_button or 'GEARS' in st.session_state:
 
           if np.isclose(theta_B_root_rad, np.pi / 2) or np.isclose(theta_B_root_rad, -np.pi / 2):
             # B
-            x_B_line_root = np.full(_linespace_, x_pointB_root)
-            y_B_line_root = np.linspace(y_pointB_root, y_pointB_base, _linespace_)
+            x_B_line_root = np.full(_linespace_2, x_pointB_root)
+            y_B_line_root = np.linspace(y_pointB_root, y_pointB_base, _linespace_2)
           else:
-            x_B_line_root = np.linspace(x_pointB_root, x_pointB_base, _linespace_)
+            x_B_line_root = np.linspace(x_pointB_root, x_pointB_base, _linespace_2)
             y_B_line_root = y_pointB_root + (x_B_line_root - x_pointB_root) * np.tan(theta_B_root_rad)
 
           line_x_root_B.append(x_B_line_root)
@@ -1054,9 +1056,9 @@ if run_button or 'GEARS' in st.session_state:
           theta_B_tip_rad = np.arctan2(y_pointB_tip, x_pointB_tip)
 
           if theta_A_tip_rad <= theta_B_tip_rad:
-            theta_arc_tip = np.linspace(theta_A_tip_rad, theta_B_tip_rad, _linespace_)
+            theta_arc_tip = np.linspace(theta_A_tip_rad, theta_B_tip_rad, _linespace_3)
           else:
-            theta_arc_tip = np.linspace(theta_A_tip_rad, theta_B_tip_rad + 2 * np.pi, _linespace_)
+            theta_arc_tip = np.linspace(theta_A_tip_rad, theta_B_tip_rad + 2 * np.pi, _linespace_3)
 
           arc_x_tip.append(radd * np.cos(theta_arc_tip))
           arc_y_tip.append(radd * np.sin(theta_arc_tip))
