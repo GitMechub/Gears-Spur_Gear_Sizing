@@ -1212,7 +1212,8 @@ if run_button or 'GEARS' in st.session_state:
               # Exportar como STL e STEP
               step_file = str(path)+"/gear_"+str(gear)+".step"
 
-              exporters.export(result, str(path)+"/gear_"+str(gear)+".stl")
+              #exporters.export(result, str(path)+"/gear_"+str(gear)+".stl")
+              exporters.export(result, "gear_"+str(gear)+".stl")
 
               exporters.export(result, step_file)
 
