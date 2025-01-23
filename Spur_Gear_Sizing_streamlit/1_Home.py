@@ -622,7 +622,7 @@ def compound_train(mg_list, mg_total, T_mot, T_req, C, vel, N_cyc, Ns_lim, ang_p
   #
 #
 
-st.title("Spur Gear Sizing v1.0.0", anchor=False)
+st.title("Spur Gear Sizing v1.1.0", anchor=False)
 
 col1, col12 = st.columns([1, 4])
 
