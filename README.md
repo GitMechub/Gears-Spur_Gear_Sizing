@@ -20,7 +20,7 @@ In addition, Gear Train Sizer will create a separate sheet with the precise coor
 - Fast and easy sizing - Input a few parameters and get a complete gear train design
 - Detailed analysis - Table shows dimensions, stresses, safety factors for each gear
 - Full configuration - Displays complete gear train layout with IDs
-- CAD integration - Generates gear profile coordinates for CAD modeling
+- CAD integration - Generates both a '.stp' file and the gear profile coordinates for CAD modeling
 
 - Tutorial Video:
 
@@ -51,7 +51,7 @@ O aplicativo então gerará uma tabela detalhada mostrando as principais dimens�
 - Dimensionamento rápido e fácil - Insira alguns parâmetros e obtenha um design completo do trem de engrenagens
 - Análise detalhada - Tabela mostra dimensões, tensões e fatores de segurança para cada engrenagem
 - Configuração completa - Exibe o layout completo do trem de engrenagens com IDs
-- Integração com CAD - Gera coordenadas do perfil das engrenagens para modelagem CAD
+- Integração com CAD - Gera tanto um arquivo '.stp' quanto as coordenadas do perfil das engrenagens para modelagem CAD
 
 - Vídeo Tutorial:
 
