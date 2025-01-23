@@ -36,6 +36,8 @@ import matplotlib.patches as patches
 import matplotlib.patheffects as path_effects
 import cadquery as cq
 from cadquery import exporters
+import streamlit_stl
+from streamlit_stl import stl_from_file
 
 ################# FUNCTIONS #################
 
@@ -622,7 +624,7 @@ def compound_train(mg_list, mg_total, T_mot, T_req, C, vel, N_cyc, Ns_lim, ang_p
 
 st.title("Spur Gear Sizing v1.0.0", anchor=False)
 
-col1, col12 = st.columns([1, 2])
+col1, col12 = st.columns([1, 4])
 
 col1.subheader("Setup", divider="gray", anchor=False)
 
@@ -631,7 +633,7 @@ col1.subheader("Setup", divider="gray", anchor=False)
 if 'active_page' not in st.session_state:
     st.session_state.active_page = '1_Home'
     st.session_state.t_mot = 6
-    st.session_state.t_req = 18
+    st.session_state.t_req = 17
     st.session_state.c = 100
     st.session_state.Vel = 70
     st.session_state.n_cyc = 1e7
@@ -712,7 +714,7 @@ if run_button or 'GEARS' in st.session_state:
 
     with st.spinner('Loading...'):
 
-      col2, col3 = col12.columns([2, 2])
+      col2, col3 = col12.columns([1, 1])
 
       ################# RUNNING #################
 
@@ -901,7 +903,8 @@ if run_button or 'GEARS' in st.session_state:
       gear_coord = {}
 
       _linespace_ = int(C/3)
-      _linespace_2 = _linespace_/gears[gear]['Number of teeth'] if _linespace_/gears[gear]['Number of teeth'] > 3 else 3
+      #_linespace_2 = _linespace_/gears[gear]['Number of teeth'] if _linespace_/gears[gear]['Number of teeth'] > 3 else 3
+      _linespace_2 = max(int(gears[gear]['Radius'] * 0.1), 3)
       _linespace_3 = 3
 
       for gear in range(len(gears)):
@@ -1171,47 +1174,48 @@ if run_button or 'GEARS' in st.session_state:
 
         return list(zip(x_values, y_values))
 
-      col3.markdown("Gears CAD .stp :")
+      col3.markdown("Gears CAD .step :")
 
       with col3:
+
         with st.spinner('Wait for the download buttons for the ' + str(len(gears)) + ' gears'):
-            
+
             def dict_to_tuples(coord_dict, key):
                 x_values = np.concatenate([coord_dict[key]['x']])
                 y_values = np.concatenate([coord_dict[key]['y']])
                 return list(zip(x_values, y_values))
-                        
+
             for gear in range(len(gears)):
-            
+
               tuplas = dict_to_tuples(gear_coord, gear)
-            
+
               tuplas_ = [(round(x, 4), round(y, 4)) for x, y in tuplas]
-            
+
               #tuplas_ = [(x, y) for (x, y, s, t) in tuplas]
-            
+
               # Converter tuplas_ em um array NumPy para vetorização
               tuplas_array = np.array(tuplas_)
-            
+
               # Eliminar pontos duplicados (baseado em linha consecutiva)
               diferentes = np.any(np.diff(tuplas_array, axis=0), axis=1)
               lista_pontos = np.vstack((tuplas_array[0], tuplas_array[1:][diferentes]))
-            
+
               # Criar o perfil para o esboço no formato (r, z) (já otimizado)
               perfil = [(r, z) for z, r in lista_pontos]  # Inverte as coordenadas
-            
+
               # Criar o esboço no CadQuery
               esboco = cq.Workplane("XY").polyline(perfil).close()
-            
+
               # Revolver o perfil ao redor do eixo Z
               result = esboco.extrude(round(gears[gear]['Face width'], 2))
-            
+
               # Exportar como STL e STEP
               step_file = str(path)+"/gear_"+str(gear)+".step"
-                
+
               exporters.export(result, str(path)+"/gear_"+str(gear)+".stl")
-            
+
               exporters.export(result, step_file)
-                
+
               # Create a download button
               st.download_button(
                       label="Download CAD Gear "+str(gear)+".step",
@@ -1219,6 +1223,18 @@ if run_button or 'GEARS' in st.session_state:
                       file_name="gear_"+str(gear)+".step",
                       mime="application/step"
               )
+              try:
+                stl_from_file(
+                  file_path="gear_"+str(gear)+".stl",
+                  material='material',
+                  auto_rotate=False,
+                  opacity=1,
+                  cam_h_angle=-180
+                )
+              except:
+                pass
+
+
 
 
 else:
