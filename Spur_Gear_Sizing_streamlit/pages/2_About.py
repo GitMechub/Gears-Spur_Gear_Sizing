@@ -25,7 +25,7 @@ hide_menu = '''
         '''
 st.markdown(hide_menu, unsafe_allow_html=True)
 
-st.header("Spur Gear Sizing v1.0.0", divider="gray", anchor=False)
+st.header("Spur Gear Sizing v1.1.0", divider="gray", anchor=False)
 
 st.markdown('''
 ## About Gear Train Sizer:
@@ -48,7 +48,7 @@ In addition, Gear Train Sizer will create a separate sheet with the precise coor
 - Fast and easy sizing - Input a few parameters and get a complete gear train design
 - Detailed analysis - Table shows dimensions, stresses, safety factors for each gear
 - Full configuration - Displays complete gear train layout with IDs
-- CAD integration - Generates gear profile coordinates for CAD modeling
+- CAD integration - Generates both a '.stp' file and the gear profile coordinates for CAD modeling
 
 --- 
 
